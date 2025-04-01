@@ -77,10 +77,10 @@ on:
       kernel_repo:
         description: "Set the kernel repository"
         required: false
-        default: "ophub/kernel"
+        default: "OneYX/kernel"
         type: choice
         options:
-          - ophub/kernel
+          - OneYX/kernel
           - breakingbadboy/OpenWrt
       auto_kernel:
         description: "Auto use the latest kernel"
@@ -107,7 +107,7 @@ on:
         options:
           - ophub
           - angel
-          - yourname
+          - OneYX
 
 env:
   TZ: America/New_York
@@ -166,7 +166,7 @@ jobs:
         working-directory: /builder
         if: ${{ steps.init.outputs.status }} == 'success' && !cancelled()
         run: |
-          armvirt_tarfile_repo="ophub/amlogic-s9xxx-openwrt"
+          armvirt_tarfile_repo="OneYX/amlogic-s9xxx-openwrt"
           releases_tag_keywords="OpenWrt_lede"
 
           armvirt_tarfile_path="openwrt/bin/targets/armvirt/64"
