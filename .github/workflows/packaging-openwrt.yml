@@ -52,11 +52,15 @@ on:
           - s922x-n2
           - vplus
           - zcube1-max
-          - diy
+          - sv-33a6x
       customize_rk3399:
         description: "Set customize rk3399 devices"
         required: false
-        default: "tvi3315a:rk3399-tvi3315a.dtb/sw799:rk3399-bozz-sw799.dtb"
+        default: "sv-33a6x:rk3399-sv-33a6x.dtb"
+        type: choice
+        options:
+          - sv-33a6x:rk3399-sv-33a6x.dtb
+          - tvi3315a:rk3399-tvi3315a.dtb/sw799:rk3399-bozz-sw799.dtb
       openwrt_kernel:
         description: "Select kernel version"
         required: false
