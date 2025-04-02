@@ -106,7 +106,7 @@ on:
       builder_name:
         description: "Set OpenWrt builder signature."
         required: false
-        default: "ophub"
+        default: "OneYX"
         type: choice
         options:
           - ophub
