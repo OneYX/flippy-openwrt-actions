@@ -13,7 +13,7 @@ on:
       openwrt_soc:
         description: "Select device board."
         required: false
-        default: "all"
+        default: "sv-33a6x"
         type: choice
         options:
           - all
@@ -64,7 +64,7 @@ on:
       openwrt_kernel:
         description: "Select kernel version"
         required: false
-        default: "6.1.y_6.12.y"
+        default: "6.1.y"
         type: choice
         options:
           - 5.4.y
@@ -81,10 +81,10 @@ on:
       kernel_repo:
         description: "Set the kernel repository"
         required: false
-        default: "OneYX/kernel"
+        default: "pingdongyi/kernel"
         type: choice
         options:
-          - OneYX/kernel
+          - pingdongyi/kernel
           - breakingbadboy/OpenWrt
       auto_kernel:
         description: "Auto use the latest kernel"
@@ -106,12 +106,12 @@ on:
       builder_name:
         description: "Set OpenWrt builder signature."
         required: false
-        default: "OneYX"
+        default: "sign"
         type: choice
         options:
           - ophub
           - angel
-          - OneYX
+          - sign
 
 env:
   TZ: America/New_York
@@ -170,7 +170,7 @@ jobs:
         working-directory: /builder
         if: ${{ steps.init.outputs.status }} == 'success' && !cancelled()
         run: |
-          armvirt_tarfile_repo="OneYX/amlogic-s9xxx-openwrt"
+          armvirt_tarfile_repo="pingdongyi/amlogic-s9xxx-openwrt"
           releases_tag_keywords="OpenWrt_lede"
 
           armvirt_tarfile_path="openwrt/bin/targets/armvirt/64"
@@ -212,7 +212,7 @@ jobs:
           ln -sf /builder/${SELECT_PACKITPATH} /opt/${SELECT_PACKITPATH}
 
       - name: Package OpenWrt Firmware
-        uses: OneYX/flippy-openwrt-actions@main
+        uses: pingdongyi/flippy-openwrt-actions@main
         if: ${{ steps.download.outputs.status }} == 'success' && !cancelled()
         env:
           OPENWRT_ARMVIRT: openwrt/bin/targets/*/*/*rootfs.tar.gz
